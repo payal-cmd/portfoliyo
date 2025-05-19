@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Engineer Portfolio | DevOps, Developer, Cyber Security, Prompt Engineering</title>
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0E1128;
+    color: #E0E6F2;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  a {
+    color: #4bd1d1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #1ed6d6;
+  }
+  header {
+    position: fixed;
+    width: 100%;
+    background: rgba(14,17,40,0.85);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    z-index: 1000;
+  }
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .logo img {
+    width: 80px;
+    height: 80px;
+    /* letter-spacing: 2px;
+    color: #4bd1d1; */
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav ul li {
+    font-weight: 600;
+  }
+  main {
+    margin-top: 70px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+  }
+  section {
+    margin-bottom: 5rem;
+  }
+  h1, h2, h3 {
+    font-weight: 700;
+    color: #39e6e6;
+  }
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 0.2rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    justify-content: center;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    min-height: 85vh;
+  }
+  .hero-text {
+    flex: 1;
+    min-width: 320px;
+  }
+  .hero-text p {
+    font-size: 1.25rem;
+    margin: 1.25rem 0 2rem;
+    max-width: 520px;
+    color: #C7DFF7;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: #39e6e6;
+    color: #0E1128;
+    padding: 0.75rem 1.6rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px #39e6e6aa;
+    transition: background 0.3s ease;
+  }
+  .btn-primary:hover, .btn-primary:focus {
+    background: #27baba;
+    box-shadow: 0 6px 25px #27babacc;
+  }
+  .hero-canvas-container {
+    flex: 1;
+    min-width: 320px;
+    height: 350px;
+    position: relative;
+  }
+  /* Skills */
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 2rem;
+  }
+  .skill-card {
+    background: #1b2045;
+    padding: 1.8rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 20px #0a0d21bb;
+    transition: transform 0.3s ease;
+  }
+  .skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 40px #39e6e6cc;
+  }
+  .skill-card h3 {
+    margin-bottom: 0.5rem;
+    color: #39e6e6;
+  }
+  .skill-card p {
+    color: #a0aedb;
+    font-size: 0.95rem;
+  }
+  /* Portfolio */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: #1b2045;
+    border-radius: 14px;
+    box-shadow: 0 9px 30px #0b1026cc;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 38px #39e6e6cc;
+  }
+  .project-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-size: cover;
+    background-position: center;
+  }
+  .project-content {
+    padding: 1rem 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #39e6e6;
+  }
+  .project-desc {
+    flex-grow: 1;
+    font-size: 0.95rem;
+    color: #c3d6f5dd;
+  }
+  .project-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #39e6e6;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .project-link:hover {
+    color: #1ed6d6;
+  }
+  /* Contact */
+  .contact-form {
+    background: #1b2045;
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 28px #0a0d22cc;
+    max-width: 480px;
+    margin: auto;
+  }
+  .contact-form h2 {
+    margin-bottom: 1.2rem;
+    color: #39e6e6;
+    text-align: center;
+  }
+  .form-group {
+    margin-bottom: 1.3rem;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #95b4c7;
+  }
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    background: #2b2f5e;
+    color: #e0e6f2;
+    resize: vertical;
+    transition: background 0.3s ease;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    outline: none;
+    background: #3a3f75;
+  }
+  textarea {
+    min-height: 110px;
+  }
+  .btn-submit {
+    width: 100%;
+    background: #39e6e6;
+    border: none;
+    padding: 0.85rem 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 30px;
+    color: #0E1128;
+    cursor: pointer;
+    box-shadow: 0 4px 14px #39e6e6aa;
+    transition: background 0.3s ease;
+  }
+  .btn-submit:hover, .btn-submit:focus {
+    background: #27baba;
+    box-shadow: 0 6px 25px #27babacc;
+  }
+  footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    color: #4a5295;
+    border-top: 1px solid #202544;
+    margin-top: 4rem;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo" tabindex="0"> 
+        <a href="/"><img src="Modern P Letter Logo Instagram Post_20250519_143848_0000.png"alt="your logo"></a>"
+    </div>
+    <ul>
+      <li><a href="#about" tabindex="0">About</a></li>
+      <li><a href="#skills" tabindex="0">Skills</a></li>
+      <li><a href="#portfolio" tabindex="0">Portfolio</a></li>
+      <li><a href="#contact" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home" aria-label="Introduction and professional summary">
+    <div class="hero-text">
+      <h1 tabindex="0">Payal Chaudhari</h1>
+      <h2 tabindex="0">Software Engineer | DevOps | Cyber Security | Prompt Engineering</h2>
+      <p tabindex="0">Crafting scalable, secure solutions through code, automation, and AI-driven insights. Dedicated to enhancing systems & security and driving innovation.</p>
+      <a href="#contact" class="btn-primary" tabindex="0" aria-label="Contact Payal Chaudhari">Hire Me</a>
+    </div>
+    <div class="hero-canvas-container" aria-hidden="true">
+      <canvas id="heroCanvas"></canvas>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="aboutHeading">
+    <h2 id="aboutHeading" tabindex="0">About Me</h2>
+    <p tabindex="0">
+      Experienced Software Engineer with a passion for DevOps, secure system design, and cutting-edge AI prompt engineering. I build resilient infrastructure, automate workflows, and engineer prompt solutions to deliver optimal results.
+    </p>
+  </section>
+
+  <section id="skills" aria-labelledby="skillsHeading">
+    <h2 id="skillsHeading" tabindex="0">My Skills</h2>
+    <div class="skills-list">
+      <div class="skill-card" tabindex="0" role="region" aria-label="DevOps skill">
+        <h3>DevOps</h3>
+        <p>CI/CD pipelines, Kubernetes, Docker, Terraform, AWS, Azure, Monitoring & Automation</p>
+      </div>
+      
+      <div class="skill-card" tabindex="0" role="region" aria-label="Cyber Security skill">
+        <h3>Cyber Security</h3>
+        <p>Vulnerability assessment, penetration testing, secure coding practices, IAM, encryption</p>
+      </div>
+      <div class="skill-card" tabindex="0" role="region" aria-label="Prompt Engineering skill">
+        <h3>Prompt Engineering</h3>
+        <p>AI-driven prompt design, NLP optimization, iterative model tuning, ChatGPT and GPT API integration</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" aria-labelledby="portfolioHeading">
+    <h2 id="portfolioHeading" tabindex="0">Portfolio</h2>
+    <div class="projects-grid">
+      <article class="project-card" tabindex="0">
+        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1581093588401-178b30166a4a?auto=format&fit=crop&w=800&q=80');" aria-label="CI/CD Pipeline Automation project screenshot"></div>
+        <div class="project-content">
+          <h3 class="project-title">CI/CD Pipeline Automation</h3>
+          <p class="project-desc">Designed and implemented fully automated Docker & Kubernetes pipelines on Azure, reducing deployment times by 70%.</p>
+          <a class="project-link" href="#" aria-label="More about CI/CD Pipeline Automation project" tabindex="0">Learn More &rarr;</a>
+        </div>
+      </article>
+
+      
+
+      <article class="project-card" tabindex="0">
+        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80');" aria-label="Cybersecurity Penetration Testing project screenshot"></div>
+        <div class="project-content">
+          <h3 class="project-title">Penetration Testing</h3>
+          <p class="project-desc">Executed comprehensive penetration tests on enterprise clients' networks leading to identification and remediation of critical risks.</p>
+          <a class="project-link" href="#" aria-label="More about Penetration Testing project" tabindex="0">Learn More &rarr;</a>
+        </div>
+      </article>
+
+      <article class="project-card" tabindex="0">
+        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1573164574396-cb89e39749f7?auto=format&fit=crop&w=800&q=80');" aria-label="AI Prompt Engineering project screenshot"></div>
+        <div class="project-content">
+          <h3 class="project-title">AI Prompt Engineering</h3>
+          <p class="project-desc">Created optimized prompt frameworks enabling advanced natural language tasks with GPT models to accelerate automation.</p>
+          <a class="project-link" href="#" aria-label="More about AI Prompt Engineering project" tabindex="0">Learn More &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contactHeading">
+    <h2 id="contactHeading" tabindex="0">Contact Me</h2>
+    <form class="contact-form" action="mailto:john.doe@example.com" method="POST" enctype="text/plain" aria-label="Contact form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your Full Name" required tabindex="0" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required tabindex="0" />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here…" required tabindex="0"></textarea>
+      </div>
+      <a href="mailto:chaudharipayal246@gamil.com?subject=New Message from Portfolio&body="class="btn-submit" tabindex="0">Send Message</a> 
+        
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Payal Chaudhari - All rights reserved.
+</footer>
+
+<!-- Three.js CDN -->
+ 
+ 
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script>
+  // 3D rotating wireframe sphere as unique professional graphic
+  (() => {
+    const container = document.querySelector('.hero-canvas-container');
+    const canvas = document.getElementById('heroCanvas');
+    let scene, camera, renderer, sphere;
+
+    function init() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.z = 4;
+
+      renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+
+      // Wireframe sphere geometry
+      const geometry = new THREE.SphereGeometry(1.3, 48, 48);
+      const material = new THREE.MeshBasicMaterial({
+        color: 0x39e6e6,
+        wireframe: true,
+        opacity: 0.75,
+        transparent: true,
+      });
+      sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
+
+      window.addEventListener('resize', onWindowResize, false);
+      animate();
+    }
+
+    function onWindowResize() {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      sphere.rotation.y += 0.0075;
+      sphere.rotation.x += 0.0035;
+      renderer.render(scene, camera);
+    }
+
+    init();
+  })();
+</script>
+<script>
+    document.getElementById('sendEmailButton').addEventListener('click', function() {
+      const message = document.getElementById('message').value;
+      const recipient = 'chaudharipayal246@gmail.com';
+      const subject = 'New Message';
+      const body = message;
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
